@@ -10,25 +10,59 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://repoviz.netlify.app/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#8b5cf6" />
 
     <!-- SEO Meta Tags -->
+    <title>RepoViz - Visualize GitHub Repositories Instantly</title>
     <meta name="description"
-        content="RepoViz - Instantly visualize GitHub repository README files and folder structures. Paste any GitHub URL to explore repository contents with beautiful markdown rendering." />
-    <meta name="keywords" content="github, readme, viewer, folder structure, repository, visualization, markdown" />
-    <meta name="author" content="RepoViz" />
+        content="Instantly visualize any GitHub repository. Explore file structures, view stats, and read READMEs in a beautiful, interactive interface. No login required." />
+    <meta name="keywords"
+        content="github, visualization, repository viewer, folder structure, git tree, repo statistics, developer tools, open source" />
+    <meta name="author" content="Zuhaib Ashid" />
+    <meta name="robots" content="index, follow" />
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="RepoViz - GitHub Repository Visualizer" />
+    <meta property="og:title" content="RepoViz - Visualize GitHub Repositories Instantly" />
     <meta property="og:description"
-        content="Instantly visualize GitHub repository README files and folder structures" />
+        content="Explore GitHub repositories with a stunning new interface. View folder structures, code stats, and premium markdown rendering." />
+    <meta property="og:image" content="https://repoviz.netlify.app/og-image.jpg" />
+    <meta property="og:url" content="https://repoviz.netlify.app/" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RepoViz" />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="RepoViz - GitHub Repository Visualizer" />
+    <meta name="twitter:title" content="RepoViz - Visualize GitHub Repositories Instantly" />
     <meta name="twitter:description"
-        content="Instantly visualize GitHub repository README files and folder structures" />
+        content="Explore GitHub repositories with a stunning new interface. View folder structures, code stats, and premium markdown rendering." />
+    <meta name="twitter:image" content="https://repoviz.netlify.app/og-image.jpg" />
+    <meta name="twitter:creator" content="@zuhaibashid" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "RepoViz",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "url": "https://repoviz.netlify.app/",
+      "author": {
+        "@type": "Person",
+        "name": "Zuhaib Ashid",
+        "url": "https://www.zuhaibashid.com/"
+      },
+      "description": "A web application to visualize GitHub repository folder structures, statistics, and README files in a modern, interactive interface.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": "GitHub Repository Visualization, Folder Structure Tree, Markdown Viewer, Repository Statistics"
+    }
+    </script>
 
     <!-- Preconnect to GitHub API -->
     <link rel="preconnect" href="https://api.github.com" />
@@ -39,8 +73,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet" />
-
-    <title>RepoViz - GitHub Repository Visualizer</title>
 </head>
 
 <body>
