@@ -5,6 +5,7 @@ import RepoStats from "./components/RepoStats";
 import ReadmeViewer from "./components/ReadmeViewer";
 import FolderTree from "./components/FolderTree";
 import ExportOptions from "./components/ExportOptions";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { fetchAllRepoData } from "./services/githubAPI";
 import { buildTreeStructure, calculateTreeStats } from "./utils/treeGenerator";
@@ -101,6 +102,9 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden bg-dark-950">
+      {/* Header */}
+      <Header />
+
       {/* Optimized animated gradient background */}
       <div className="fixed inset-0 -z-10 transform-gpu">
         {/* Base gradient */}
@@ -132,12 +136,12 @@ function App() {
 
       {/* Top progress bar when loading */}
       {loading && (
-        <div className="fixed top-0 left-0 right-0 h-1 bg-dark-800 z-50 overflow-hidden">
+        <div className="fixed top-0 left-0 right-0 h-1 bg-dark-800 z-[60] overflow-hidden">
           <div className="h-full bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500 animate-[shimmer_1.5s_ease-in-out_infinite] w-full" />
         </div>
       )}
 
-      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 relative z-10">
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-24 md:pt-32 flex-1 relative z-10">
         <URLInput onSubmit={handleFetchRepo} loading={loading} />
 
         {error && (
