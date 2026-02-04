@@ -1,0 +1,179 @@
+.folder-tree {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.folder-tree.empty {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--text-secondary);
+}
+
+.tree-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tree-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.tree-stats {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.stat strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.stat-divider {
+    color: var(--border);
+}
+
+.tree-content {
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: auto;
+    overscroll-behavior: contain;
+}
+
+.tree-content[data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.tree-content::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.tree-content::-webkit-scrollbar-track {
+    background: rgba(139, 92, 246, 0.05);
+    border-radius: 4px;
+}
+
+.tree-content::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.3);
+    border-radius: 4px;
+}
+
+.tree-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.5);
+}
+
+.tree-node {
+    user-select: none;
+}
+
+.tree-node-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.tree-node-content.folder:hover {
+    background: rgba(139, 92, 246, 0.1);
+}
+
+.tree-node-content.file {
+    cursor: default;
+}
+
+.tree-node-content.file:hover {
+    background: rgba(139, 92, 246, 0.05);
+}
+
+.chevron {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.node-icon {
+    font-size: 1.125rem;
+    flex-shrink: 0;
+}
+
+.node-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-size {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.tree-children {
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .folder-tree {
+        padding: 1.5rem;
+    }
+
+    .tree-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tree-content {
+        max-height: 400px;
+    }
+
+    .node-name {
+        font-size: 0.85rem;
+    }
+}

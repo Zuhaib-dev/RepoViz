@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+    html {
+        @apply scroll-smooth;
+    }
+
+    html.lenis {
+        height: auto;
+    }
+
+    .lenis.lenis-smooth {
+        scroll-behavior: auto;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+        overflow: hidden;
+    }
+
+    .lenis.lenis-scrolling iframe {
+        pointer-events: none;
+    }
+
+    body {
+        @apply bg-dark-950 text-dark-50 font-sans antialiased overflow-x-hidden;
+        line-height: 1.6;
+    }
+
+    ::selection {
+        @apply bg-primary-500/30 text-dark-50;
+    }
+
+    *:focus-visible {
+        @apply outline-2 outline-primary-500 outline-offset-2;
+    }
+}
+
+@layer components {
+
+    /* Custom scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+        @apply w-2 h-2;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        @apply bg-primary-500/5 rounded;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        @apply bg-primary-500/30 rounded hover:bg-primary-500/50;
+    }
+
+    /* Glass card */
+    .glass-card {
+        @apply bg-dark-900/80 backdrop-blur-lg border border-primary-500/20 rounded-2xl shadow-xl;
+    }
+
+    /* Gradient text */
+    .gradient-text {
+        @apply bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent;
+    }
+
+    /* Button gradient */
+    .btn-gradient {
+        @apply bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold rounded-xl shadow-lg shadow-primary-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-0.5 active:translate-y-0;
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
