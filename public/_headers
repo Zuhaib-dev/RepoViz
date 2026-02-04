@@ -3,6 +3,3 @@
 
 /robots.txt
   Content-Type: text/plain
-
-/*.xml
-  Content-Type: application/xml
