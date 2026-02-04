@@ -5,6 +5,7 @@ import RepoStats from "./components/RepoStats";
 import ReadmeViewer from "./components/ReadmeViewer";
 import FolderTree from "./components/FolderTree";
 import ExportOptions from "./components/ExportOptions";
+import Footer from "./components/Footer";
 import { fetchAllRepoData } from "./services/githubAPI";
 import { buildTreeStructure, calculateTreeStats } from "./utils/treeGenerator";
 
@@ -233,31 +234,7 @@ function App() {
         )}
       </div>
 
-      <footer className="text-center py-8 mt-16 border-t border-primary-500/10 backdrop-blur-sm relative z-10">
-        <p className="text-dark-400 text-sm flex items-center justify-center gap-2">
-          Made with <span className="text-red-500 animate-pulse-slow">❤️</span>{" "}
-          by{" "}
-          <a
-            href="https://www.zuhaibrashid.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-bold gradient-text hover:opacity-80 transition-opacity hover:scale-105 transform inline-block"
-          >
-            Zuhaib Rashid
-          </a>
-        </p>
-        <div className="text-xs text-dark-500 mt-2">
-          Data provided by{" "}
-          <a
-            href="https://docs.github.com/en/rest"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-primary-400 transition-colors"
-          >
-            GitHub API
-          </a>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
