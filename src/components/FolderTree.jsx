@@ -25,10 +25,10 @@ const TreeNode = ({ node, level = 0 }) => {
         <div>
             <div
                 className={`
-          group/node flex items-center gap-2 px-3 py-2.5 rounded-lg transition-all duration-200 relative
+          group/node flex items-center gap-2 md:gap-2 px-3 md:px-3 py-3 md:py-2.5 rounded-lg transition-all duration-200 relative min-h-[44px] md:min-h-0
           ${isFolder ? 'cursor-pointer hover:bg-primary-500/10 hover:border-l-2 hover:border-primary-500' : 'hover:bg-primary-500/5'}
         `}
-                style={{ paddingLeft: `${level * 1.5 + 0.75}rem` }}
+                style={{ paddingLeft: `${level * 2 + 0.75}rem` }}
                 onClick={handleToggle}
             >
                 {/* Hover glow effect */}
@@ -37,19 +37,19 @@ const TreeNode = ({ node, level = 0 }) => {
                 )}
 
                 {isFolder && (
-                    <span className={`text-dark-400 text-xs flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-0' : '-rotate-90'}`}>
+                    <span className={`text-dark-400 text-sm md:text-xs flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-0' : '-rotate-90'} min-w-[16px] flex items-center justify-center`}>
                         <FaChevronDown />
                     </span>
                 )}
                 <Icon
-                    className={`text-lg flex-shrink-0 transition-transform group-hover/node:scale-110 ${isFolder ? 'group-hover/node:rotate-6' : ''}`}
+                    className={`text-xl md:text-lg flex-shrink-0 transition-transform group-hover/node:scale-110 ${isFolder ? 'group-hover/node:rotate-6' : ''}`}
                     style={{ color: iconData.color }}
                 />
-                <span className="font-mono text-sm text-dark-200 flex-1 truncate group-hover/node:text-dark-50 transition-colors">
+                <span className="font-mono text-sm md:text-sm text-dark-200 flex-1 truncate group-hover/node:text-dark-50 transition-colors">
                     {node.name}
                 </span>
                 {!isFolder && node.size && (
-                    <span className="text-xs text-dark-500 flex-shrink-0 bg-dark-800/50 px-2 py-1 rounded">
+                    <span className="text-[10px] md:text-xs text-dark-500 flex-shrink-0 bg-dark-800/50 px-2 py-1 rounded whitespace-nowrap">
                         {formatBytes(node.size)}
                     </span>
                 )}

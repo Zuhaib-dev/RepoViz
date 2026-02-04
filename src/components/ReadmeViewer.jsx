@@ -25,18 +25,18 @@ const ReadmeViewer = ({ content, repoName }) => {
     }
 
     return (
-        <div className="glass-card p-6 sm:p-8 group hover:border-primary-500/40 transition-all duration-300">
+        <div className="glass-card p-5 md:p-6 lg:p-8 group hover:border-primary-500/40 transition-all duration-300">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b-2 border-primary-500/20">
                 <div className="flex items-center gap-3">
-                    <div className="p-3 bg-primary-500/10 rounded-xl">
-                        <FaBook className="text-2xl text-primary-400" />
+                    <div className="p-2.5 md:p-3 bg-primary-500/10 rounded-xl flex-shrink-0">
+                        <FaBook className="text-xl md:text-2xl text-primary-400" />
                     </div>
-                    <div>
-                        <h2 className="text-2xl font-bold text-dark-50 flex items-center gap-2">
+                    <div className="min-w-0 flex-1">
+                        <h2 className="text-xl md:text-2xl font-bold text-dark-50 flex items-center gap-2">
                             README.md
                         </h2>
                         {repoName && (
-                            <span className="font-mono text-sm text-dark-400 mt-1 block">
+                            <span className="font-mono text-xs md:text-sm text-dark-400 mt-1 block truncate">
                                 {repoName}
                             </span>
                         )}

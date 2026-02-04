@@ -81,12 +81,12 @@ const ExportOptions = ({ tree, repoName }) => {
     ];
 
     return (
-        <div className="glass-card p-6 group hover:border-primary-500/40 transition-all duration-300">
+        <div className="glass-card p-5 md:p-6 group hover:border-primary-500/40 transition-all duration-300">
             <div className="flex items-center gap-3 mb-5">
-                <div className="p-2 bg-primary-500/10 rounded-lg">
-                    <FaDownload className="text-xl text-primary-400" />
+                <div className="p-2 md:p-2 bg-primary-500/10 rounded-lg flex-shrink-0">
+                    <FaDownload className="text-lg md:text-xl text-primary-400" />
                 </div>
-                <h3 className="text-lg font-semibold text-dark-50">Export Folder Structure</h3>
+                <h3 className="text-base md:text-lg font-semibold text-dark-50">Export Folder Structure</h3>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -96,24 +96,24 @@ const ExportOptions = ({ tree, repoName }) => {
                         onClick={onClick}
                         disabled={downloading}
                         className={`
-              group/btn relative flex items-center justify-center gap-3 ${bg} border ${border} ${color} px-6 py-4 rounded-xl font-semibold 
+              group/btn relative flex items-center justify-center gap-2 md:gap-3 ${bg} border ${border} ${color} px-5 md:px-6 py-4 md:py-4 rounded-xl font-semibold text-sm md:text-base
               hover:bg-opacity-20 hover:border-opacity-60 hover:-translate-y-1 transition-all duration-200 
               active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0
-              ${glow} overflow-hidden
+              ${glow} overflow-hidden min-h-[48px]
             `}
                     >
                         {/* Shimmer effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
 
-                        <Icon className={`text-xl relative ${downloading ? 'animate-bounce' : 'group-hover/btn:scale-110 transition-transform'}`} />
+                        <Icon className={`text-lg md:text-xl relative ${downloading ? 'animate-bounce' : 'group-hover/btn:scale-110 transition-transform'} flex-shrink-0`} />
                         <span className="relative">{label}</span>
                     </button>
                 ))}
             </div>
 
             <div className="mt-4 p-3 bg-dark-800/30 rounded-lg border border-primary-500/10">
-                <p className="text-xs text-dark-400 flex items-center gap-2">
-                    <span className="text-primary-400">💡</span>
+                <p className="text-xs md:text-xs text-dark-400 flex items-start md:items-center gap-2">
+                    <span className="text-primary-400 flex-shrink-0">💡</span>
                     <span>Export the folder structure for documentation or analysis</span>
                 </p>
             </div>

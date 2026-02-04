@@ -59,23 +59,23 @@ const RepoStats = ({ repoInfo, languages }) => {
     ];
 
     return (
-        <div className="glass-card p-6 sm:p-8 group hover:border-primary-500/40 transition-all duration-300">
+        <div className="glass-card p-5 md:p-6 lg:p-8 group hover:border-primary-500/40 transition-all duration-300">
             {/* Header */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-                <div className="flex items-center gap-4">
-                    <div className="relative group/avatar">
+                <div className="flex items-center gap-3 md:gap-4 w-full sm:w-auto">
+                    <div className="relative group/avatar flex-shrink-0">
                         <div className="absolute inset-0 bg-primary-500/30 rounded-xl blur-lg group-hover/avatar:bg-primary-500/40 transition-all" />
                         <img
                             src={repoInfo.owner.avatar}
                             alt={repoInfo.owner.login}
-                            className="relative w-16 h-16 rounded-xl border-2 border-primary-500/30 shadow-lg group-hover/avatar:scale-110 transition-transform duration-300"
+                            className="relative w-14 h-14 md:w-16 md:h-16 rounded-xl border-2 border-primary-500/30 shadow-lg group-hover/avatar:scale-110 transition-transform duration-300"
                         />
                     </div>
-                    <div>
-                        <h2 className="text-2xl sm:text-3xl font-bold text-dark-50 flex items-center gap-2">
-                            {repoInfo.name}
+                    <div className="flex-1 min-w-0">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-dark-50 flex items-center gap-2 flex-wrap">
+                            <span className="truncate">{repoInfo.name}</span>
                             {repoInfo.private && (
-                                <span className="text-xs bg-accent-500/20 text-accent-400 px-2 py-1 rounded-full border border-accent-500/30">
+                                <span className="text-[10px] md:text-xs bg-accent-500/20 text-accent-400 px-2 py-1 rounded-full border border-accent-500/30 flex-shrink-0">
                                     Private
                                 </span>
                             )}
@@ -84,10 +84,10 @@ const RepoStats = ({ repoInfo, languages }) => {
                             href={repoInfo.owner.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-sm text-dark-400 hover:text-primary-400 transition-colors group/link"
+                            className="flex items-center gap-1.5 text-xs md:text-sm text-dark-400 hover:text-primary-400 transition-colors group/link mt-1"
                         >
-                            <FaUser className="text-xs" />
-                            <span className="group-hover/link:underline">{repoInfo.owner.login}</span>
+                            <FaUser className="text-[10px] md:text-xs flex-shrink-0" />
+                            <span className="group-hover/link:underline truncate">{repoInfo.owner.login}</span>
                         </a>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ const RepoStats = ({ repoInfo, languages }) => {
                     href={repoInfo.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/btn btn-gradient px-5 py-2.5 text-sm w-full sm:w-auto text-center flex items-center justify-center gap-2"
+                    className="group/btn btn-gradient px-4 md:px-5 py-2.5 md:py-2.5 text-sm w-full sm:w-auto text-center flex items-center justify-center gap-2 min-h-[44px] flex-shrink-0"
                 >
                     <span>View on GitHub</span>
                     <FaExternalLinkAlt className="text-xs group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
@@ -104,63 +104,63 @@ const RepoStats = ({ repoInfo, languages }) => {
 
             {/* Description */}
             {repoInfo.description && (
-                <p className="text-dark-300 leading-relaxed mb-6 text-lg">{repoInfo.description}</p>
+                <p className="text-dark-300 leading-relaxed mb-6 text-base md:text-lg">{repoInfo.description}</p>
             )}
 
-            {/* Stats Grid with staggered animation */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            {/* Stats Grid with better mobile stacking */}
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6">
                 {stats.map(({ icon: Icon, label, value, color, bg, border, glow }, index) => (
                     <div
                         key={label}
-                        className={`${bg} border ${border} rounded-xl p-5 hover:border-opacity-60 hover:-translate-y-1 transition-all duration-300 ${glow} group/stat relative overflow-hidden`}
+                        className={`${bg} border ${border} rounded-xl p-4 md:p-5 hover:border-opacity-60 hover:-translate-y-1 transition-all duration-300 ${glow} group/stat relative overflow-hidden`}
                         style={{ animationDelay: `${index * 0.1}s` }}
                     >
                         {/* Shimmer effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover/stat:translate-x-full transition-transform duration-1000" />
 
-                        <div className="relative flex items-center gap-3">
-                            <div className={`p-3 rounded-lg ${bg} ${color}`}>
-                                <Icon className="text-2xl" />
+                        <div className="relative flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3">
+                            <div className={`p-2 md:p-3 rounded-lg ${bg} ${color} flex-shrink-0`}>
+                                <Icon className="text-xl md:text-2xl" />
                             </div>
-                            <div>
-                                <div className="text-3xl font-bold text-dark-50">
+                            <div className="flex-1 min-w-0">
+                                <div className="text-2xl md:text-3xl font-bold text-dark-50 truncate">
                                     {formatNumber(value)}
                                 </div>
-                                <div className="text-xs text-dark-400 font-medium uppercase tracking-wide">{label}</div>
+                                <div className="text-[10px] md:text-xs text-dark-400 font-medium uppercase tracking-wide">{label}</div>
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
 
-            {/* Meta Info */}
-            <div className="flex flex-wrap items-center gap-4 py-4 border-y border-primary-500/20 mb-6">
+            {/* Meta Info - Better mobile wrapping */}
+            <div className="flex flex-wrap items-center gap-2 md:gap-4 py-4 border-y border-primary-500/20 mb-6">
                 {repoInfo.language && (
                     <div className="flex items-center gap-2 bg-primary-500/10 px-3 py-1.5 rounded-lg border border-primary-500/20">
-                        <span className="w-3 h-3 rounded-full bg-primary-500 animate-pulse-slow" />
-                        <span className="text-sm text-dark-200 font-semibold">{repoInfo.language}</span>
+                        <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-primary-500 animate-pulse-slow flex-shrink-0" />
+                        <span className="text-xs md:text-sm text-dark-200 font-semibold">{repoInfo.language}</span>
                     </div>
                 )}
                 {repoInfo.license && (
-                    <div className="flex items-center gap-2 text-sm text-dark-300 bg-dark-800/50 px-3 py-1.5 rounded-lg">
-                        <span>📄</span>
-                        <span>{repoInfo.license}</span>
+                    <div className="flex items-center gap-2 text-xs md:text-sm text-dark-300 bg-dark-800/50 px-3 py-1.5 rounded-lg">
+                        <span className="flex-shrink-0">📄</span>
+                        <span className="truncate">{repoInfo.license}</span>
                     </div>
                 )}
-                <div className="flex items-center gap-2 text-sm text-dark-300 bg-dark-800/50 px-3 py-1.5 rounded-lg">
-                    <FaCalendar className="text-xs" />
-                    <span>Updated {formatDate(repoInfo.updatedAt)}</span>
+                <div className="flex items-center gap-2 text-xs md:text-sm text-dark-300 bg-dark-800/50 px-3 py-1.5 rounded-lg">
+                    <FaCalendar className="text-[10px] md:text-xs flex-shrink-0" />
+                    <span className="whitespace-nowrap">Updated {formatDate(repoInfo.updatedAt)}</span>
                 </div>
             </div>
 
             {/* Languages with enhanced visualization */}
             {languages && languages.length > 0 && (
                 <div>
-                    <h3 className="text-lg font-semibold text-dark-50 mb-4 flex items-center gap-2">
-                        <span className="w-1 h-6 bg-gradient-to-b from-primary-500 to-secondary-500 rounded-full" />
+                    <h3 className="text-base md:text-lg font-semibold text-dark-50 mb-4 flex items-center gap-2">
+                        <span className="w-1 h-5 md:h-6 bg-gradient-to-b from-primary-500 to-secondary-500 rounded-full flex-shrink-0" />
                         Languages
                     </h3>
-                    <div className="flex h-3 rounded-full overflow-hidden mb-4 bg-dark-800 shadow-inner">
+                    <div className="flex h-2.5 md:h-3 rounded-full overflow-hidden mb-4 bg-dark-800 shadow-inner">
                         {languages.slice(0, 5).map((lang, index) => (
                             <div
                                 key={index}
@@ -172,17 +172,17 @@ const RepoStats = ({ repoInfo, languages }) => {
                                 title={`${lang.name}: ${lang.percentage}%`}
                             >
                                 {/* Tooltip on hover */}
-                                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-dark-900 text-dark-50 text-xs rounded opacity-0 group-hover/lang:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-dark-900 text-dark-50 text-xs rounded opacity-0 group-hover/lang:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
                                     {lang.name}: {lang.percentage}%
                                 </div>
                             </div>
                         ))}
                     </div>
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap gap-2 md:gap-3">
                         {languages.slice(0, 5).map((lang, index) => (
-                            <div key={index} className="flex items-center gap-2 text-sm bg-dark-800/50 px-3 py-2 rounded-lg border border-primary-500/10 hover:border-primary-500/30 transition-colors">
+                            <div key={index} className="flex items-center gap-2 text-xs md:text-sm bg-dark-800/50 px-3 py-2 rounded-lg border border-primary-500/10 hover:border-primary-500/30 transition-colors">
                                 <span
-                                    className="w-3 h-3 rounded-full shadow-lg"
+                                    className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full shadow-lg flex-shrink-0"
                                     style={{ backgroundColor: getLanguageColor(lang.name) }}
                                 />
                                 <span className="text-dark-200 font-medium">{lang.name}</span>
