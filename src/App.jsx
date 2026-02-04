@@ -16,7 +16,7 @@ function App() {
     // Initialize Lenis smooth scroll
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 1.2,
+            duration: 1.0, // Reduced from 1.2
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             direction: 'vertical',
             gestureDirection: 'vertical',
@@ -76,24 +76,21 @@ function App() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col relative overflow-hidden">
-            {/* Enhanced animated gradient background with multiple layers */}
-            <div className="fixed inset-0 -z-10">
+        <div className="min-h-screen flex flex-col relative overflow-hidden bg-dark-950">
+            {/* Optimized animated gradient background */}
+            <div className="fixed inset-0 -z-10 transform-gpu">
                 {/* Base gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950" />
 
-                {/* Animated gradient orbs */}
-                <div className="absolute inset-0 opacity-40">
-                    <div className="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-primary-500/20 rounded-full blur-3xl animate-float" />
-                    <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-secondary-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-accent-500/10 rounded-full blur-3xl animate-pulse-slow" />
+                {/* Visual grid - Optimized opacity */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
+
+                {/* Animated gradient orbs - Reduced blur and optimized animations */}
+                <div className="absolute inset-0 opacity-30 will-change-transform">
+                    <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-primary-900/40 rounded-full blur-[80px] animate-float" />
+                    <div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] bg-secondary-900/40 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }} />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-900/20 rounded-full blur-[80px] animate-pulse-slow" />
                 </div>
-
-                {/* Grid pattern overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
-
-                {/* Noise texture */}
-                <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')]" />
             </div>
 
             {/* Top progress bar when loading */}

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FaBook, FaCopy } from 'react-icons/fa';
 
 const ReadmeViewer = ({ content, repoName }) => {
-    const [copiedCode, setCopiedCode] = React.useState('');
+    const [copiedCode, setCopiedCode] = useState('');
 
     const handleCopyCode = (code) => {
         navigator.clipboard.writeText(code);
@@ -46,6 +47,7 @@ const ReadmeViewer = ({ content, repoName }) => {
             <div className="prose prose-invert prose-primary max-w-none overscroll-contain">
                 <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
                     skipHtml={false}
                     components={{
                         code({ node, inline, className, children, ...props }) {
