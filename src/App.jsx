@@ -13,10 +13,13 @@ function App() {
     const [error, setError] = React.useState('');
     const [repoData, setRepoData] = React.useState(null);
 
-    // Initialize Lenis smooth scroll
+    const [deferredPrompt, setDeferredPrompt] = React.useState(null);
+
+    // Initial load and PWA install prompt handler
     useEffect(() => {
+        // Initialize Lenis
         const lenis = new Lenis({
-            duration: 1.0, // Reduced from 1.2
+            duration: 1.0,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             direction: 'vertical',
             gestureDirection: 'vertical',
@@ -32,10 +35,28 @@ function App() {
 
         requestAnimationFrame(raf);
 
+        // PWA Install Prompt
+        const handleBeforeInstallPrompt = (e) => {
+            e.preventDefault();
+            setDeferredPrompt(e);
+        };
+
+        window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
         return () => {
             lenis.destroy();
+            window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
         };
     }, []);
+
+    const handleInstallClick = async () => {
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+            setDeferredPrompt(null);
+        }
+    };
 
     const handleFetchRepo = async (owner, repo) => {
         setLoading(true);
@@ -92,6 +113,16 @@ function App() {
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-900/20 rounded-full blur-[80px] animate-pulse-slow" />
                 </div>
             </div>
+
+            {/* PWA Install Button - Fixed at bottom right */}
+            {deferredPrompt && (
+                <button
+                    onClick={handleInstallClick}
+                    className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-full shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50 hover:scale-105 transition-all text-sm font-semibold animate-fade-in-up"
+                >
+                    <span>📱</span> Install App
+                </button>
+            )}
 
             {/* Top progress bar when loading */}
             {loading && (
