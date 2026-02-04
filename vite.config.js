@@ -8,7 +8,26 @@ export default defineConfig({
         react(),
         VitePWA({
             registerType: 'autoUpdate',
-            includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'favicon-32x32.png', 'favicon-16x16.png', 'robots.txt'],
+            includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'favicon-32x32.png', 'favicon-16x16.png', 'robots.txt', 'sitemap.xml'],
+            workbox: {
+                navigateFallbackDenylist: [/^\/sitemap\.xml$/, /^\/robots\.txt$/],
+                runtimeCaching: [
+                    {
+                        urlPattern: /^https:\/\/api\.github\.com\/.*/i,
+                        handler: 'NetworkFirst',
+                        options: {
+                            cacheName: 'github-api-cache',
+                            expiration: {
+                                maxEntries: 50,
+                                maxAgeSeconds: 60 * 60 * 24 // 24 hours
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200]
+                            }
+                        }
+                    }
+                ]
+            },
             manifest: {
                 name: 'RepoViz - GitHub Repository Visualizer',
                 short_name: 'RepoViz',
