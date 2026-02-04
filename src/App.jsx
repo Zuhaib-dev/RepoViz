@@ -176,17 +176,28 @@ function App() {
             </div>
 
             <footer className="text-center py-8 mt-16 border-t border-primary-500/10 backdrop-blur-sm relative z-10">
-                <p className="text-dark-400 text-sm">
-                    Built with <span className="text-red-500 animate-pulse-slow">❤️</span> using React • Data from{' '}
+                <p className="text-dark-400 text-sm flex items-center justify-center gap-2">
+                    Made with <span className="text-red-500 animate-pulse-slow">❤️</span> by{' '}
+                    <a
+                        href="https://www.zuhaibashid.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold gradient-text hover:opacity-80 transition-opacity hover:scale-105 transform inline-block"
+                    >
+                        Zuhaib Rashid
+                    </a>
+                </p>
+                <div className="text-xs text-dark-500 mt-2">
+                    Data provided by{' '}
                     <a
                         href="https://docs.github.com/en/rest"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary-400 hover:text-secondary-400 transition-colors font-semibold hover:underline"
+                        className="hover:text-primary-400 transition-colors"
                     >
                         GitHub API
                     </a>
-                </p>
+                </div>
             </footer>
         </div>
     );
