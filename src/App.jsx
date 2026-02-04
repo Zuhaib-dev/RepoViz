@@ -179,7 +179,7 @@ function App() {
                 <p className="text-dark-400 text-sm flex items-center justify-center gap-2">
                     Made with <span className="text-red-500 animate-pulse-slow">❤️</span> by{' '}
                     <a
-                        href="https://www.zuhaibashid.com/"
+                        href="https://www.zuhaibrashid.com/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-bold gradient-text hover:opacity-80 transition-opacity hover:scale-105 transform inline-block"
