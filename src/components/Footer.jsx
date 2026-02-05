@@ -30,7 +30,7 @@ const Footer = () => {
         {
             name: 'Twitter',
             icon: FaTwitter,
-            url: 'https://twitter.com/zuhaib_dev',
+            url: 'https://x.com/xuhaib_x9',
             color: 'hover:text-sky-400',
             bgGradient: 'hover:from-sky-500 hover:to-sky-700'
         },
