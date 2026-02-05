@@ -23,7 +23,7 @@ const Footer = () => {
         {
             name: 'LinkedIn',
             icon: FaLinkedin,
-            url: 'https://www.linkedin.com/in/zuhaib-rashid/',
+            url: 'https://www.linkedin.com/in/zuhaib-rashid-661345318/',
             color: 'hover:text-blue-400',
             bgGradient: 'hover:from-blue-600 hover:to-blue-800'
         },
